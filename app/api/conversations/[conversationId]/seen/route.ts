@@ -47,22 +47,22 @@ interface IParams {
         }
     
         // Update seen of last message
-        // const updatedMessage = await prisma.message.update({
-        //   where: {
-        //     id: lastMessage.id
-        //   },
-        //   include: {
-        //     sender: true,
-        //     seen: true,
-        //   },
-        //   data: {
-        //     seen: {
-        //       connect: {
-        //         id: currentUser.id
-        //       }
-        //     }
-        //   }
-        // });
+        const updatedMessage = await prisma.message.update({
+          where: {
+            id: lastMessage.id
+          },
+          include: {
+            sender: true,
+            seen: true,
+          },
+          data: {
+            seen: {
+              connect: {
+                id: currentUser.id
+              }
+            }
+          }
+        });
     
 
         return NextResponse.json(updatedMessage);
